@@ -20,3 +20,9 @@ def train_val(y_train, y_train_pred, y_test, y_pred, model_name):
     }
     
     return pd.DataFrame(scores)
+
+
+def adjusted_r2_score(y_true, y_pred, n, k):
+    r2 = r2_score(y_true, y_pred)
+    adjusted_r2 = 1 - ((1 - r2) * (n - 1) / (n - k - 1))
+    return adjusted_r2
